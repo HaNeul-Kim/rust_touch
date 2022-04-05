@@ -1,0 +1,14 @@
+[package]
+name = "touch"
+version = "0.1.0"
+edition = "2021"
+authors = ["hskimsky@gmail.com"]
+description = "rust 로 만든 file last modified time 변경"
+license = "Apache-2.0"
+repository = "https://github.com/HaNeul-Kim/rust_touch"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+filetime = "0.2"
+chrono = "0.4"
