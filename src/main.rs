@@ -1,10 +1,9 @@
 use std::env;
 use std::fs;
-use std::io::Error;
 use std::path::Path;
-use std::time::{SystemTime, UNIX_EPOCH};
+use std::time::SystemTime;
 
-use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc};
+use chrono::{DateTime, Local, NaiveDateTime, TimeZone};
 use filetime::FileTime;
 
 fn print_usage() {
@@ -22,8 +21,9 @@ fn main() -> std::io::Result<()> {
       let file_path = &args[1];
       let metadata = fs::metadata(file_path)?;
       if let Ok(time) = metadata.modified() {
-        let old_date_time: DateTime<Local> = time.into();
-        println!("{} {}", file_path, old_date_time.format("%Y%m%d_%H%M%S%.3f"));
+        let date_time: DateTime<Local> = time.into();
+        let old_date_time = date_time.format("%Y%m%d_%H%M%S%.3f");
+        println!("{file_path} {old_date_time}");
       }
     }
     3 => {
